@@ -71,3 +71,8 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 test_xlab/Library/PackageCache
+test_xlab/Library
+test_xlab/Logs
+test_xlab/Temp
+test_xlab/UserSettings
+*.vsconfig
