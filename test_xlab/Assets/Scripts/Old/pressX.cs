@@ -11,7 +11,7 @@ public class pressX : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             GameObject stone = Instantiate(stonePrefab, spawnPosition, Quaternion.identity);
             Rigidbody rb = stone.GetComponent<Rigidbody>();
