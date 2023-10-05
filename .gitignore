@@ -76,3 +76,4 @@ test_xlab/Logs
 test_xlab/Temp
 test_xlab/UserSettings
 *.vsconfig
+test_xlab/obj

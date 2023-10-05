@@ -2,13 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class deleteBlob : MonoBehaviour
+
+namespace TestXlab
 {
-    void OnCollisionEnter(Collision collision)
+    public class deleteBlob : MonoBehaviour
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        void OnCollisionEnter(Collision collision)
         {
-            Destroy(gameObject);
+            if (collision.gameObject.CompareTag("Ground"))
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

@@ -14,11 +14,10 @@ namespace TestXlab
         private bool m_moved = false;
         public float moveSpeed = 12f;
 
-        private int m_targetIndex = 0;
+        private int m_targetIndex = -1;
         private float initialCloudHeight;
 
-        private float timeRain = 5;
-
+        private bool isRain = false;
 
         public void Action()
         {
@@ -30,6 +29,7 @@ namespace TestXlab
             }
 
             m_moved = true;
+            isRain = false;
 
             m_targetIndex++;
             if (m_targetIndex >= targets.Length)
@@ -37,6 +37,7 @@ namespace TestXlab
                 m_targetIndex = 0;
             }
         }
+
         private void Start()
         {
             initialCloudHeight = cloud.position.y;
@@ -58,25 +59,27 @@ namespace TestXlab
 
             if (Vector3.Distance(cloud.position, targetPosition) < offset.magnitude)
             {
-                if (timeRain > 0)
-                {
-                    cloud.position = targetPosition;
+                 cloud.position = targetPosition;
+                 m_moved = false;
 
-                    timeRain -= Time.deltaTime;
-                    Instantiate(rainPrefab, cloud.position + new Vector3(Random.Range(-1.5f, 1.5f), Random.Range(-0.2f, 0.2f), Random.Range(-1.5f, 1.5f)), Quaternion.identity);
-
-                    m_moved = false;
-                }
-                else
-                {
-                    timeRain = 5;
-                }
+                 if (!m_moved)
+                 {
+                    isRain = true;
+                    StartCoroutine(StartRain());
+                 } 
             }
             else
             {
                 cloud.Translate(offset);
             }
-            
         }
-	}
+        private IEnumerator StartRain()
+        {
+            while (isRain)
+            {
+                Instantiate(rainPrefab, cloud.position + new Vector3(Random.Range(-1.5f, 1.5f), Random.Range(-0.2f, 0.2f), Random.Range(-1.5f, 1.5f)), Quaternion.identity);
+                yield return new WaitForSeconds(0.01f);
+            }
+        }
+    }
 }
