@@ -1646,11 +1646,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 184260057}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a57b018b9a5fea4bbdcf7235dfca4d2, type: 3}
+  m_Script: {fileID: 11500000, guid: 6a8cd2812b994d5478ff505d546fe973, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spawner: {fileID: 1562465985}
-  cloudController: {fileID: 0}
+  cloudController: {fileID: 760042068}
 --- !u!4 &184260059
 Transform:
   m_ObjectHideFlags: 0
@@ -6569,7 +6569,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 760042067}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e2a13056679faf49917b94148a75a18, type: 3}
+  m_Script: {fileID: 11500000, guid: 02aa83ecd51af4c4bb7def41735f5c5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   targets:
@@ -6580,9 +6580,9 @@ MonoBehaviour:
   - {fileID: 1367782378}
   - {fileID: 648544553}
   - {fileID: 6889718}
-  moveSpeed: 10
   cloud: {fileID: 1022963113}
-  targetFramerate: 60
+  rainPrefab: {fileID: 2478029727018974697, guid: 33e3ad20193e64647ad77792809b3d67, type: 3}
+  moveSpeed: 10
 --- !u!4 &760042069
 Transform:
   m_ObjectHideFlags: 0
@@ -13990,7 +13990,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1562465984}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2882654d90697e4478b7186526fcda28, type: 3}
+  m_Script: {fileID: 11500000, guid: d4d6a56b01f9a1c43ae43c608931b36f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   prefabs:

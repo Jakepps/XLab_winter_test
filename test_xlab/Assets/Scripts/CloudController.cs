@@ -5,15 +5,20 @@ using UnityEngine;
 namespace TestXlab
 {
 
-    public class CloudController : MonoBehaviour
-    {
-        public Transform[] targets;
-        public float moveSpeed = 10f;
-        public Transform cloud;
-        public int targetFramerate = 60;
+	public class CloudController : MonoBehaviour
+	{
+		public Transform[] targets;
+		public Transform cloud;
+        public GameObject rainPrefab;
+
+        private bool m_moved = false;
+        public float moveSpeed = 12f;
 
         private int m_targetIndex = 0;
-        private bool m_moved = false;
+        private float initialCloudHeight;
+
+        private float timeRain = 5;
+
 
         public void Action()
         {
@@ -32,10 +37,13 @@ namespace TestXlab
                 m_targetIndex = 0;
             }
         }
+        private void Start()
+        {
+            initialCloudHeight = cloud.position.y;
+        }
 
         private void Update()
-        {
-            Application.targetFrameRate = targetFramerate;
+		{
 
             if (!m_moved)
             {
@@ -43,18 +51,32 @@ namespace TestXlab
             }
 
             Transform target = targets[m_targetIndex];
-            Vector3 targetPosition = new Vector3(target.position.x, cloud.position.y, target.position.z);
+            
+            Vector3 targetPosition = new Vector3(target.position.x, initialCloudHeight, target.position.z);
+
             Vector3 offset = (targetPosition - cloud.position).normalized * moveSpeed * Time.deltaTime;
 
             if (Vector3.Distance(cloud.position, targetPosition) < offset.magnitude)
             {
-                cloud.position = targetPosition;
-                m_moved = false;
+                if (timeRain > 0)
+                {
+                    cloud.position = targetPosition;
+
+                    timeRain -= Time.deltaTime;
+                    Instantiate(rainPrefab, cloud.position + new Vector3(Random.Range(-1.5f, 1.5f), Random.Range(-0.2f, 0.2f), Random.Range(-1.5f, 1.5f)), Quaternion.identity);
+
+                    m_moved = false;
+                }
+                else
+                {
+                    timeRain = 5;
+                }
             }
             else
             {
                 cloud.Translate(offset);
             }
+            
         }
-    }
+	}
 }

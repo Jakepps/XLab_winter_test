@@ -13,7 +13,7 @@ public class rain : MonoBehaviour
 
     void Update()
     {   
-        if (Input.GetKeyDown(KeyCode.Z))  buttonZ = true;
+        if (Input.GetKeyDown(KeyCode.Q))  buttonZ = true;
         if (buttonZ)
         {
             Vector3 targetPosition = points[currentPoint].position + new Vector3(0,5,0);

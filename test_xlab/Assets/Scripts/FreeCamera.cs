@@ -58,14 +58,15 @@ public class FreeCamera : MonoBehaviour
 
 		float rotX = Input.GetAxis("Mouse X") * sensitivity;
 		float rotY = Input.GetAxis("Mouse Y") * sensitivity;
-		rotY = Mathf.Clamp(rotY, -90, 90);
+		rotY = Mathf.Clamp(rotY, -90f, 90f);
 
 		if (Input.GetKey(KeyCode.Mouse1))
 		{
-			mainCamera.transform.localEulerAngles += new Vector3(-rotY, rotX, 0);
+			mainCamera.transform.localEulerAngles += new Vector3(-rotY, rotX, 0f);
 		}
 
-		direction = new Vector3(h, 0, v);
+		direction = new Vector3(h, 0f, v);
+
 		direction = mainCamera.transform.TransformDirection(direction);
 	}
 
