@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2465157453206330485}
   - component: {fileID: 2479002573341924696}
   - component: {fileID: 2479002573341924697}
-  - component: {fileID: 2479002573341924701}
   m_Layer: 0
   m_Name: blob_rain
   m_TagString: Untagged
@@ -135,15 +134,3 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: d1fd41beb70267947bc1c996df07593d, type: 3}
---- !u!114 &2479002573341924701
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2478029727018974697}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b71117e2c6bd814db9e28b8b334e17b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
