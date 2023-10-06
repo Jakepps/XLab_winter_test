@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.116146244, g: 0.13364333, b: 0.16271642, a: 1}
+  m_IndirectSpecularColor: {r: 0.11614465, g: 0.13364176, b: 0.16271546, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -649,6 +649,11 @@ GameObject:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5908927168535876971, guid: 05d0ea177d971fd49bbad0bdf292aca8, type: 3}
   m_PrefabInstance: {fileID: 1367782377}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &78682770 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8435645324878718306, guid: c86589473eb08e040b9078d832a2d4b3, type: 3}
+  m_PrefabInstance: {fileID: 1146574076}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &80761771
 PrefabInstance:
@@ -3653,11 +3658,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f9878bcb9e11af42871a331a7e1d10b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponTags:
-  - VillagerPlow
-  - VillagerFishingRod
-  - VillagerHammer
-  - VillagerPickaxe
+  weapons:
+  - {fileID: 2084577523}
+  - {fileID: 1048809051}
+  - {fileID: 78682770}
+  - {fileID: 1387840036}
   characters:
   - {fileID: 701712646}
   - {fileID: 1663500445}
@@ -9159,6 +9164,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4947743726954784, guid: 63ce2b31e16acab4d8a41f884c36333c, type: 3}
   m_PrefabInstance: {fileID: 1045032437}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1048809051 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5859693740196260252, guid: 8636a621b3ea3fb4a902553949b6adab, type: 3}
+  m_PrefabInstance: {fileID: 1659989084}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1049143374
 GameObject:
   m_ObjectHideFlags: 0
@@ -12335,6 +12345,11 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 264414c28ea0fbb41b924fd17d9228b3, type: 3}
+--- !u!1 &1387840036 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 235310315609338240, guid: 210ea86c955a5db419b0ad0a777d2bbe, type: 3}
+  m_PrefabInstance: {fileID: 659539011}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1391116799
 GameObject:
   m_ObjectHideFlags: 0
@@ -19006,6 +19021,11 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 87dc0b67e5fe70f40a31e17b0c0058b4, type: 3}
+--- !u!1 &2084577523 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 350799694411882302, guid: 0577306f947ebac4486c16bda41798b1, type: 3}
+  m_PrefabInstance: {fileID: 648544552}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2092447302 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1069567032315564, guid: bdf8e7438a7816543998181bd3067573, type: 3}

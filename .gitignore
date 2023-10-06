@@ -77,3 +77,4 @@ test_xlab/Temp
 test_xlab/UserSettings
 *.vsconfig
 test_xlab/obj
+.DS_Store

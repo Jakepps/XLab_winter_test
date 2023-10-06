@@ -6,38 +6,47 @@ namespace TestXlab
 {
     public class WeaponController : MonoBehaviour
     {
-        public string[] weaponTags;
-        public GameObject[] characters;
+        public GameObject[] weapons; 
+        public GameObject[] characters; 
+        public string[] weaponNames;
 
+        private void Start()
+        {
+            weaponNames = new string[weapons.Length];
+            
+            for (int i = 0; i < weapons.Length; i++)
+            {
+                weaponNames[i] = weapons[i].name;
+            }
+        }
+        
         public void Change()
         {
             Debug.Log("Try change!");
 
-            int randomWeaponTagIndex = Random.Range(0, weaponTags.Length);
+            int randomWeaponIndex = Random.Range(0, weapons.Length);
             int randomCharacterIndex = Random.Range(0, characters.Length);
 
-            string selectedWeaponTag = weaponTags[randomWeaponTagIndex];
+            string selectedWeaponName = weaponNames[randomWeaponIndex];
             GameObject selectedCharacter = characters[randomCharacterIndex];
 
-            GameObject[] weaponsWithSelectedTag = GameObject.FindGameObjectsWithTag(selectedWeaponTag);
+            //GameObject selectedWeapon = Array.Find(weapons, weapon => weapon.name == selectedWeaponName);
+            GameObject selectedWeapon = weapons[randomWeaponIndex];
 
-            if (weaponsWithSelectedTag.Length > 0)
+            if (selectedWeapon != null)
             {
-                int randomWeaponIndex = Random.Range(0, weaponsWithSelectedTag.Length);
-                GameObject selectedWeapon = weaponsWithSelectedTag[randomWeaponIndex];
-
-                GameObject currentWeapon = selectedCharacter.transform.Find("Weapon").gameObject;
+                GameObject currentWeapon = selectedCharacter.transform.Find(selectedWeaponName).gameObject;
                 Destroy(currentWeapon);
 
-                GameObject newWeapon = Instantiate(selectedWeapon, selectedCharacter.transform.Find("WeaponSpawnPoint").position, Quaternion.identity);
+                GameObject newWeapon = Instantiate(selectedWeapon, selectedCharacter.transform.position, Quaternion.identity); 
                 newWeapon.transform.parent = selectedCharacter.transform;
-                newWeapon.name = "Weapon";
+                newWeapon.name = "Weapon " + newWeapon.name;
 
                 Debug.Log("Weapon changed to " + selectedWeapon.name + " for character " + selectedCharacter.name);
             }
             else
             {
-                Debug.LogWarning("No weapon found with tag " + selectedWeaponTag);
+                Debug.LogWarning("No weapon found with name " + selectedWeaponName);
             }
         }
     }
