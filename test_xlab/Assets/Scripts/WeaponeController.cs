@@ -24,29 +24,37 @@ namespace TestXlab
         {
             Debug.Log("Try change!");
 
-            int randomWeaponIndex = Random.Range(0, weapons.Length);
-            int randomCharacterIndex = Random.Range(0, characters.Length);
+            //int randomWeaponIndex = Random.Range(0, weapons.Length);
 
-            string selectedWeaponName = weaponNames[randomWeaponIndex];
+            int randomCharacterIndex = Random.Range(0, characters.Length);
             GameObject selectedCharacter = characters[randomCharacterIndex];
 
-            //GameObject selectedWeapon = Array.Find(weapons, weapon => weapon.name == selectedWeaponName);
-            GameObject selectedWeapon = weapons[randomWeaponIndex];
+            GameObject currentWeapon = null;
 
-            if (selectedWeapon != null)
+            for (int i = 0; i < weapons.Length;i++) 
             {
-                GameObject currentWeapon = selectedCharacter.transform.Find(selectedWeaponName).gameObject;
+                if (selectedCharacter.transform.Find(weaponNames[i]) != null)
+                {
+                    currentWeapon = selectedCharacter.transform.Find(weaponNames[i]).gameObject;
+
+                    break;
+                }
+            }
+
+            if (currentWeapon != null)
+            {
                 Destroy(currentWeapon);
 
-                GameObject newWeapon = Instantiate(selectedWeapon, selectedCharacter.transform.position, Quaternion.identity); 
+                int randomWeaponIndex = Random.Range(0, weapons.Length);
+                GameObject newWeapon = Instantiate(weapons[randomWeaponIndex], selectedCharacter.transform.position, Quaternion.identity);
                 newWeapon.transform.parent = selectedCharacter.transform;
                 newWeapon.name = "Weapon " + newWeapon.name;
 
-                Debug.Log("Weapon changed to " + selectedWeapon.name + " for character " + selectedCharacter.name);
+                Debug.Log("Weapon changed to " + newWeapon.name + " for character " + selectedCharacter.name);
             }
             else
             {
-                Debug.LogWarning("No weapon found with name " + selectedWeaponName);
+                Debug.Log("No weapon found with name " + selectedCharacter.name);
             }
         }
     }
