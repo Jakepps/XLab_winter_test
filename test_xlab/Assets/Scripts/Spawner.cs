@@ -11,11 +11,11 @@ namespace TestXlab
 
         public void Spawn()
         {
-            Debug.Log("Try spawn!");
+            //Debug.Log("Try spawn!");
 
             var prefab = GetRandomPrefab();
 
-			if (prefab == null)
+            if (prefab == null)
             {
                 Debug.LogError("Spawner - prefab == null");
                 return;
@@ -26,14 +26,14 @@ namespace TestXlab
 
         private GameObject GetRandomPrefab()
         {
-			if (prefabs.Length == 0)
-			{
-				Debug.LogError("Spawner - prefabs is empty!");
-				return null;
-			}
+            if (prefabs.Length == 0)
+            {
+                Debug.LogError("Spawner - prefabs is empty!");
+                return null;
+            }
 
-			int index = Random.Range(0, prefabs.Length);
-			return prefabs[index];
-		}
+            int index = Random.Range(0, prefabs.Length);
+            return prefabs[index];
+        }
     }
 }
