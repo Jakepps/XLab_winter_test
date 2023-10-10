@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace TestXlab
@@ -8,28 +9,27 @@ namespace TestXlab
     {
         public GameObject[] weapons; 
         public GameObject[] characters; 
-        public string[] weaponNames;
+        public List<string> weaponNames = new List<string>();
 
         private void Start()
         {
-            weaponNames = new string[weapons.Length];
-            
-            for (int i = 0; i < weapons.Length; i++)
+            foreach (var weapon in weapons)
             {
-                weaponNames[i] = weapons[i].name;
+                weaponNames.Add(weapon.name);
             }
+
         }
-        
+
         public void Change()
         {
-             Debug.Log("Try change!");
+            Debug.Log("Try change!");
 
             int randomCharacterIndex = Random.Range(0, characters.Length);
             GameObject selectedCharacter = characters[randomCharacterIndex];
 
             GameObject currentWeapon = null;
 
-            for (int i = 0; i < weapons.Length;i++) 
+            for (int i = 0; i < weapons.Length; i++) 
             {
                 string weapChild = $"DummyRig/root/B-hips/B-spine/B-chest/B-upperChest/B-shoulder_R/B-upper_arm_R/B-forearm_R/B-hand_R/{weaponNames[i]}";
                 if (selectedCharacter.transform.Find(weapChild) != null)
@@ -47,9 +47,9 @@ namespace TestXlab
                 Vector3 weaponPosition = currentWeapon.transform.position;
                 Quaternion weaponRotation = currentWeapon.transform.rotation;
 
-                Destroy(currentWeapon);
+                currentWeapon.SetActive(false);
 
-                int randomWeaponIndex = Random.Range(0, weapons.Length);
+                int randomWeaponIndex = Random.Range(0, weaponNames.Count);
                 GameObject newWeapon = Instantiate(weapons[randomWeaponIndex], weaponPosition, weaponRotation);
 
                 newWeapon.transform.SetParent(parentTrans);
