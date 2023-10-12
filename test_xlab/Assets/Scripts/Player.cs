@@ -15,6 +15,9 @@ namespace Golf
         private bool m_isDown = false;
         private Vector3 m_lastPosition;
 
+        public delegate void StickHitEventHandler();
+        public static event StickHitEventHandler OnStickHit;
+
         private void Update()
         {
             m_lastPosition = helper.position;
@@ -36,6 +39,7 @@ namespace Golf
                 if(collider.TryGetComponent(out Stone stone))
                 {
                     stone.isAfect = true;
+                    OnStickHit?.Invoke();
                 }
             }
         }

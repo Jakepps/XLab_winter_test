@@ -17,6 +17,8 @@ namespace Golf
 
         private float m_delay = 0.5f;
 
+        private int stickHits = 0;
+
         private void Awake()
         {
         }
@@ -25,6 +27,7 @@ namespace Golf
         {
             m_lastSpawnedTime = Time.time;
             RefreshDelay();
+            Player.OnStickHit += HandleStickHit;
         }
 
         private void OnEnable()
@@ -35,6 +38,7 @@ namespace Golf
         private void OnDisable()
         {
             Stone.onCollisionStone -= GameOver;
+            Player.OnStickHit -= HandleStickHit;
         }
 
         private void GameOver()
@@ -58,6 +62,12 @@ namespace Golf
         {
             m_delay = UnityEngine.Random.Range(delayMin, delayMax);
             delayMax = Mathf.Max(delayMin, delayMax - delayStep);
+        }
+
+        private void HandleStickHit()
+        {
+            stickHits++;
+            Debug.Log("Stick Hits: " + stickHits);
         }
     }
 }
