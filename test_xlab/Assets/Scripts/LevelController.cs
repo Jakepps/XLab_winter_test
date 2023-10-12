@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TestXlab;
@@ -8,53 +9,54 @@ namespace Golf
     public class LevelController : MonoBehaviour
     {
         public Spawner spawner;
-        public bool isGameOver = false;
-        public float delay = 0.5f;
+        private float m_lastSpawnedTime = 0;
 
         public float delayMax = 2f;
         public float delayMin = 0.5f;
         public float delayStep = 0.1f;
 
-        private float m_delay = 0f;
+        private float m_delay = 0.5f;
 
+        private void Awake()
+        {
+        }
 
         private void Start()
         {
-            StartCoroutine(SpawnStoneProc());
-
+            m_lastSpawnedTime = Time.time;
             RefreshDelay();
         }
 
         private void OnEnable()
         {
-            Stone.oncCollisionStone += GameOver;
+            Stone.onCollisionStone += GameOver;
         }
 
         private void OnDisable()
         {
-            Stone.oncCollisionStone -= GameOver;
+            Stone.onCollisionStone -= GameOver;
         }
-         
-        public void GameOver()
+
+        private void GameOver()
         {
             Debug.Log("!!! GAME OVER !!!");
-            enabled = true;
+            enabled = false;
         }
 
-        private IEnumerator SpawnStoneProc()
+        private void Update()
         {
-            do
+            if (Time.time >= m_lastSpawnedTime + m_delay)
             {
-                yield return new WaitForSeconds(delay);
-
                 spawner.Spawn();
+                m_lastSpawnedTime = Time.time;
+
+                RefreshDelay();
             }
-            while (!isGameOver) ;
         }
 
         public void RefreshDelay()
         {
-            m_delay = Random.Range(delayMin, delayMax);
+            m_delay = UnityEngine.Random.Range(delayMin, delayMax);
             delayMax = Mathf.Max(delayMin, delayMax - delayStep);
         }
     }

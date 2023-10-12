@@ -13,7 +13,6 @@ namespace Golf
         public float power = 20f;
 
         private bool m_isDown = false;
-
         private Vector3 m_lastPosition;
 
         private void Update()
@@ -23,22 +22,20 @@ namespace Golf
             m_isDown = Input.GetMouseButton(0);
 
             Quaternion rot = stick.localRotation;
-
-            Quaternion toRot = Quaternion.Euler(0, 0,m_isDown ? range : -range);
-
+            Quaternion toRot = Quaternion.Euler(0, 0, m_isDown ? range : -range);
             stick.localRotation = Quaternion.RotateTowards(rot, toRot, speed * Time.deltaTime);       
         }
 
         public void OnCollisonStick(Collider collider)
         {
-            if (collider.TryGetComponent(out Rigidbody stone))
+            if (collider.TryGetComponent(out Rigidbody body))
             {
                 var dir = (helper.position - m_lastPosition).normalized;
-                stone.AddForce(dir * power, ForceMode.Impulse);
+                body.AddForce(dir * power, ForceMode.Impulse);
 
-                if   (collider.TryGetComponent(out Stone stones))
+                if(collider.TryGetComponent(out Stone stone))
                 {
-                    stones.isAfect = true;
+                    stone.isAfect = true;
                 }
             }
         }
