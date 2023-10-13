@@ -29,6 +29,11 @@ namespace Golf
             stick.localRotation = Quaternion.RotateTowards(rot, toRot, speed * Time.deltaTime);       
         }
 
+        public void SetDown(bool isDown)
+        {
+
+        }
+
         public void OnCollisonStick(Collider collider)
         {
             if (collider.TryGetComponent(out Rigidbody body))
