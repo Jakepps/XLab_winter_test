@@ -9,19 +9,17 @@ namespace TestXlab
     {
         public GameObject[] prefabs;
 
-        public void Spawn()
+        public GameObject Spawn()
         {
-            //Debug.Log("Try spawn!");
-
             var prefab = GetRandomPrefab();
 
             if (prefab == null)
             {
                 Debug.LogError("Spawner - prefab == null");
-                return;
+                return null;
             }
 
-            Instantiate(prefab, transform.position, Quaternion.identity);
+            return Instantiate(prefab, transform.position, Quaternion.identity);
         }
 
         private GameObject GetRandomPrefab()

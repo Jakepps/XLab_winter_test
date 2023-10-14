@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace Golf
 {
+
     public class LevelController : MonoBehaviour
     {
         public Spawner spawner;
@@ -15,43 +16,55 @@ namespace Golf
         public float delayMin = 0.5f;
         public float delayStep = 0.1f;
 
+        public int score = 0;
+        public int hightScore = 0;
+
         private float m_delay = 0.5f;
 
-        private int stickHits = 0;
+        private List<GameObject> m_stones = new List<GameObject>(16);
 
-        private void Awake()
+        public void ClearStones()
         {
+            foreach (var stone in m_stones)
+            {
+                Destroy(stone);
+            }
+
+            m_stones.Clear();
         }
 
         private void Start()
         {
             m_lastSpawnedTime = Time.time;
             RefreshDelay();
-            Player.OnStickHit += HandleStickHit;
         }
 
         private void OnEnable()
         {
-            Stone.onCollisionStone += GameOver;
+            GameEvents.onStickHit += OnStickHit;
+            score = 0;
         }
 
         private void OnDisable()
         {
-            Stone.onCollisionStone -= GameOver;
-            Player.OnStickHit -= HandleStickHit;
+            GameEvents.onStickHit -= OnStickHit;
         }
 
-        private void GameOver()
+        private void OnStickHit()
         {
-            Debug.Log("!!! GAME OVER !!!");
-            enabled = false;
+            score++;
+            hightScore = Mathf.Max(hightScore, score);
+
+            Debug.Log($"Score: {score} - hightScore: {hightScore}");
         }
 
         private void Update()
         {
             if (Time.time >= m_lastSpawnedTime + m_delay)
             {
-                spawner.Spawn();
+                var stone = spawner.Spawn();
+                m_stones.Add(stone);
+
                 m_lastSpawnedTime = Time.time;
 
                 RefreshDelay();
@@ -64,10 +77,11 @@ namespace Golf
             delayMax = Mathf.Max(delayMin, delayMax - delayStep);
         }
 
-        private void HandleStickHit()
+
+        IEnumerator WaitEvent(System.Action callBack)
         {
-            stickHits++;
-            Debug.Log("Stick Hits: " + stickHits);
+            yield return new WaitForSeconds(delayStep);
+            callBack?.Invoke();
         }
     }
 }

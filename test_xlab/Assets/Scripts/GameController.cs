@@ -4,14 +4,14 @@ using UnityEngine;
 
 namespace Golf
 {
+
     public class GameController : MonoBehaviour
     {
-        public MainMenuState menuState;
+        public MainMenuState mainMenuState;
 
         private void Start()
         {
-           
+            mainMenuState.gameObject.SetActive(true);
         }
-
     }
 }

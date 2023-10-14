@@ -4,7 +4,8 @@ using UnityEngine;
 
 namespace Golf
 {
-    public class GameEvents : MonoBehaviour
+
+    public static class GameEvents
     {
         public static event System.Action onCollisionStones;
         public static event System.Action onStickHit;
@@ -12,6 +13,11 @@ namespace Golf
         public static void CollisionStonesInvoke(Collision collision)
         {
             onCollisionStones?.Invoke();
+        }
+
+        public static void StickHit()
+        {
+            onStickHit?.Invoke();
         }
     }
 }

@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameOverState : MonoBehaviour
+namespace Golf
 {
-    // Start is called before the first frame update
-    void Start()
+    public class GameOverState : GameState
     {
-        
-    }
+        public GameState mainMenuState;
+        public LevelController levelController;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public void Restart()
+        {
+            levelController.ClearStones();
+
+            Exit();
+            mainMenuState.Enter();
+        }
     }
 }
