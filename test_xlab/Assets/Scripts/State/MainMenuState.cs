@@ -22,7 +22,7 @@ namespace Golf
         {
             base.OnEnable();
 
-            scoreText.text = $"HScore: {levelController.hightScore}";
+            scoreText.text = $"High score: {levelController.hightScore}";
         }
     }
 }
