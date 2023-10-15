@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.11513699, g: 0.13351092, b: 0.16191982, a: 1}
+  m_IndirectSpecularColor: {r: 0.3798898, g: 0.40742925, b: 0.44591898, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1846,7 +1846,7 @@ Transform:
   m_GameObject: {fileID: 179068872}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.393, y: -0.899, z: -0.146}
+  m_LocalPosition: {x: -1.387, y: -0.899, z: -0.148}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9564,7 +9564,7 @@ Transform:
   m_GameObject: {fileID: 1018601288}
   serializedVersion: 2
   m_LocalRotation: {x: 0.0016747945, y: -0.98766917, z: -0.00089238846, w: 0.15654412}
-  m_LocalPosition: {x: 63.838, y: 24.232, z: 55.099}
+  m_LocalPosition: {x: 63.89, y: 24.23, z: 55.08}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10753,15 +10753,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5772118130745736690, guid: 79fee2343f1069945991d15dbe3c0fa1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.312
+      value: -1.293
       objectReference: {fileID: 0}
     - target: {fileID: 5772118130745736690, guid: 79fee2343f1069945991d15dbe3c0fa1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.84
+      value: -0.846
       objectReference: {fileID: 0}
     - target: {fileID: 5772118130745736690, guid: 79fee2343f1069945991d15dbe3c0fa1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.127
+      value: -0.123
       objectReference: {fileID: 0}
     - target: {fileID: 5772118130745736690, guid: 79fee2343f1069945991d15dbe3c0fa1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -16667,7 +16667,7 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -3642176413338419449, guid: 7d9b79cf4769d284e869cc13e21fd673, type: 3}
 --- !u!114 &1685455970
