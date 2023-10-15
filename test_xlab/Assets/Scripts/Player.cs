@@ -21,7 +21,7 @@ namespace Golf
             m_lastPosition = helper.position;
 
             Quaternion rot = stick.localRotation;
-            Quaternion toRot = Quaternion.Euler(0, 0, m_isDown ? range : -range);
+            Quaternion toRot = Quaternion.Euler(0, m_isDown ? -range : range, 0);
             stick.localRotation = Quaternion.RotateTowards(rot, toRot, speed * Time.deltaTime);
         }
 

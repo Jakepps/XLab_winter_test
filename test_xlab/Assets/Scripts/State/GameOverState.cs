@@ -8,10 +8,12 @@ namespace Golf
     {
         public GameState mainMenuState;
         public LevelController levelController;
+        public FailAnim failAnim;
 
         public void Restart()
         {
             levelController.ClearStones();
+            failAnim.RestartAnim();
 
             Exit();
             mainMenuState.Enter();

@@ -12,6 +12,7 @@ namespace Golf
         public PlayerController playerController;
         public GameState gameOverState;
         public TMP_Text scoreText;
+        public FailAnim failAnim;
 
         protected override void OnEnable()
         {
@@ -33,6 +34,7 @@ namespace Golf
 
         private void OnGameOver()
         {
+            failAnim.GameOverAnim();
             Exit();
             gameOverState.Enter();
         }

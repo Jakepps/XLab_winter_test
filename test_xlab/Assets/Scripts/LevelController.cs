@@ -77,11 +77,5 @@ namespace Golf
             delayMax = Mathf.Max(delayMin, delayMax - delayStep);
         }
 
-
-        IEnumerator WaitEvent(System.Action callBack)
-        {
-            yield return new WaitForSeconds(delayStep);
-            callBack?.Invoke();
-        }
     }
 }
