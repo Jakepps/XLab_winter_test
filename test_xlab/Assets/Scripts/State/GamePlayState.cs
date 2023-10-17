@@ -14,6 +14,14 @@ namespace Golf
         public TMP_Text scoreText;
         public FailAnim failAnim;
 
+        //public Transform destination;
+        //public GameObject stickCopy;
+
+        //private void Start()
+        //{
+        //    stickCopy = GameObject.Find("Stick");
+        //}
+
         protected override void OnEnable()
         {
             base.OnEnable();
@@ -33,11 +41,21 @@ namespace Golf
         }
 
         private void OnGameOver()
-        {
-            failAnim.GameOverAnim();
+        {   
             Exit();
+            //stickCopy = Instantiate(stickCopy);
+            //stickCopy.transform.SetParent(destination);
+            //stickCopy.transform.position = destination.position;
+
+            failAnim.GameOverAnim();
+            
             gameOverState.Enter();
         }
+
+        //public void destroyCopy()
+        //{
+        //    Destroy(stickCopy);
+        //}
 
         protected override void OnDisable()
         {
@@ -48,5 +66,6 @@ namespace Golf
             levelController.enabled = false;
             playerController.enabled = false;
         }
+
     }
 }

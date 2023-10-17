@@ -13,8 +13,8 @@ namespace Golf
         private float m_lastSpawnedTime = 0;
 
         public float delayMax = 2f;
-        public float delayMin = 0.5f;
-        public float delayStep = 0.1f;
+        public float delayMin = 0.3f;
+        public float delayStep = 0.05f;
 
         public int score = 0;
         public int hightScore = 0;
@@ -36,13 +36,14 @@ namespace Golf
         private void Start()
         {
             m_lastSpawnedTime = Time.time;
-            RefreshDelay();
+            //RefreshDelay();
         }
 
         private void OnEnable()
         {
             GameEvents.onStickHit += OnStickHit;
             score = 0;
+            delayMax = 2f;
         }
 
         private void OnDisable()
