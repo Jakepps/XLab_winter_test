@@ -4217,8 +4217,6 @@ MonoBehaviour:
   gameOverState: {fileID: 1944870375}
   scoreText: {fileID: 879180730}
   failAnim: {fileID: 448104197}
-  destination: {fileID: 2049461719}
-  stickCopy: {fileID: 0}
 --- !u!1 &445604996
 GameObject:
   m_ObjectHideFlags: 0
@@ -10943,6 +10941,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5437251737658426692, guid: 79fee2343f1069945991d15dbe3c0fa1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1685455974}
+    - targetCorrespondingSourceObject: {fileID: 5437251737658426692, guid: 79fee2343f1069945991d15dbe3c0fa1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1685455978}
   m_SourcePrefab: {fileID: 100100000, guid: 79fee2343f1069945991d15dbe3c0fa1, type: 3}
 --- !u!1001 &1136028977
 PrefabInstance:
@@ -16825,6 +16826,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.068476565, y: 0.066030614, z: 0.13916937}
   m_Center: {x: 0.000003184292, y: -0.3690494, z: 0.23646677}
+--- !u!54 &1685455978
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1685455965}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 2
 --- !u!1001 &1688231258
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19793,7 +19821,6 @@ MonoBehaviour:
   mainMenuState: {fileID: 78875181}
   levelController: {fileID: 445604997}
   failAnim: {fileID: 448104197}
-  playState: {fileID: 0}
 --- !u!1001 &1948866325
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20722,11 +20749,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 3602432658d7f1540978cbbd6875ad2d, type: 3}
---- !u!4 &2049461719 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -1293157592579415587, guid: fdd6c18276550d949b9969c920fdca24, type: 3}
-  m_PrefabInstance: {fileID: 205981654}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2050247259 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1069567032315564, guid: bdf8e7438a7816543998181bd3067573, type: 3}
