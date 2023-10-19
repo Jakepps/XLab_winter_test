@@ -9,6 +9,8 @@ namespace Golf
     {
         [SerializeField] private Player player;
 
+        [SerializeField] private SwingAnim SwingAnim;
+
         private void Start()
         {
             if (player == null)
@@ -28,11 +30,14 @@ namespace Golf
         public void OnDown()
         {
             player.SetDown(true);
+            SwingAnim.SwingBeg();
+
         }
 
         public void OnUp()
         {
             player.SetDown(false);
+            SwingAnim.SwingEnd();
         }
     }
 }

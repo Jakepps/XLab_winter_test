@@ -9,11 +9,9 @@ namespace Golf
         public GameState mainMenuState;
         public LevelController levelController;
         public FailAnim failAnim;
-        //private GameplayState playState;
 
         public void Restart()
         {
-            //playState.destroyCopy();
             levelController.ClearStones();
             failAnim.RestartAnim();
 

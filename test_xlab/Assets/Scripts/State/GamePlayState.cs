@@ -13,17 +13,11 @@ namespace Golf
         public GameState gameOverState;
         public GameState gameWinState;
         public TMP_Text scoreText;
+
         public FailAnim failAnim;
+        public WinAnim winAnim;
 
         private int playerScore = 0;
-
-        //public Transform destination;
-        //public GameObject stickCopy;
-
-        //private void Start()
-        //{
-        //    stickCopy = GameObject.Find("Stick");
-        //}
 
         protected override void OnEnable()
         {
@@ -43,32 +37,27 @@ namespace Golf
             playerScore = levelController.score;
             scoreText.text = $"Score: {levelController.score}";
 
-            if (playerScore >= 30)
+            if (playerScore >= 1)
                 OnGameWin();
         }
 
         private void OnGameOver()
-        {   
+        {
             Exit();
-            //stickCopy = Instantiate(stickCopy);
-            //stickCopy.transform.SetParent(destination);
-            //stickCopy.transform.position = destination.position;
 
             failAnim.GameOverAnim();
-            
+
             gameOverState.Enter();
         }
 
         public void OnGameWin()
         {
             Exit();
+
+            winAnim.VictoryAnim();
+
             gameWinState.Enter();
         }
-
-        //public void destroyCopy()
-        //{
-        //    Destroy(stickCopy);
-        //}
 
         protected override void OnDisable()
         {

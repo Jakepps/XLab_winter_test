@@ -18,11 +18,11 @@ namespace Golf
 
         private void Update()
         {
-            m_lastPosition = helper.position;
+            //m_lastPosition = helper.position;
 
-            Quaternion rot = stick.localRotation;
-            Quaternion toRot = Quaternion.Euler(0, m_isDown ? -range : range, 0);
-            stick.localRotation = Quaternion.RotateTowards(rot, toRot, speed * Time.deltaTime);
+            //Quaternion rot = stick.localRotation;
+            //Quaternion toRot = Quaternion.Euler(0, m_isDown ? range : -range, 0);
+            //stick.localRotation = Quaternion.RotateTowards(rot, toRot, speed * Time.deltaTime);
         }
 
         public void SetDown(bool value)
