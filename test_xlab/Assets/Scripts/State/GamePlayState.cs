@@ -1,8 +1,11 @@
+using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TestXlab;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 namespace Golf
 {
@@ -39,6 +42,7 @@ namespace Golf
 
             if (playerScore >= 30)
                 OnGameWin();
+
         }
 
         private void OnGameOver()

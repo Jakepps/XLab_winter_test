@@ -8,6 +8,7 @@ namespace TestXlab
     public class Spawner : MonoBehaviour
     {
         public GameObject[] prefabs;
+        public static GameObject currentBall;
 
         public GameObject Spawn()
         {
@@ -19,7 +20,13 @@ namespace TestXlab
                 return null;
             }
 
-            return Instantiate(prefab, transform.position, Quaternion.identity);
+            currentBall = Instantiate(prefab, transform.position, Quaternion.identity);
+            return currentBall;
+        }
+
+        public GameObject SetCurrentBall()
+        {
+            return currentBall;
         }
 
         private GameObject GetRandomPrefab()
