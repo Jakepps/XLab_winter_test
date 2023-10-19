@@ -37,17 +37,17 @@ namespace Golf
             playerScore = levelController.score;
             scoreText.text = $"Score: {levelController.score}";
 
-            if (playerScore >= 1)
+            if (playerScore >= 30)
                 OnGameWin();
         }
 
         private void OnGameOver()
         {
-            Exit();
+            //Exit();
 
-            failAnim.GameOverAnim();
+            //failAnim.GameOverAnim();
 
-            gameOverState.Enter();
+            //gameOverState.Enter();
         }
 
         public void OnGameWin()

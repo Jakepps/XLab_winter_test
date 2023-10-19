@@ -18,7 +18,7 @@ namespace Golf
 
         private void Update()
         {
-            //m_lastPosition = helper.position;
+            m_lastPosition = helper.position;
 
             //Quaternion rot = stick.localRotation;
             //Quaternion toRot = Quaternion.Euler(0, m_isDown ? range : -range, 0);

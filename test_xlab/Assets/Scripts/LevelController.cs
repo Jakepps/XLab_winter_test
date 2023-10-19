@@ -23,6 +23,8 @@ namespace Golf
 
         private List<GameObject> m_stones = new List<GameObject>(16);
 
+        private bool isBallSpawn = false;
+
         public void ClearStones()
         {
             foreach (var stone in m_stones)
@@ -35,6 +37,7 @@ namespace Golf
 
         private void Start()
         {
+            isBallSpawn = false;
             m_lastSpawnedTime = Time.time;
             //RefreshDelay();
         }
@@ -61,14 +64,15 @@ namespace Golf
 
         private void Update()
         {
-            if (Time.time >= m_lastSpawnedTime + m_delay)
+            if (isBallSpawn)
             {
                 var stone = spawner.Spawn();
                 m_stones.Add(stone);
 
-                m_lastSpawnedTime = Time.time;
+                //m_lastSpawnedTime = Time.time;
 
-                RefreshDelay();
+                //RefreshDelay();
+                isBallSpawn = false;
             }
         }
 
@@ -76,6 +80,11 @@ namespace Golf
         {
             m_delay = UnityEngine.Random.Range(delayMin, delayMax);
             delayMax = Mathf.Max(delayMin, delayMax - delayStep);
+        }
+
+        public void ActiveSpawn()
+        {
+            isBallSpawn = true;
         }
 
     }
