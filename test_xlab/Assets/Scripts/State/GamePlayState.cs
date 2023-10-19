@@ -11,8 +11,11 @@ namespace Golf
         public LevelController levelController;
         public PlayerController playerController;
         public GameState gameOverState;
+        public GameState gameWinState;
         public TMP_Text scoreText;
         public FailAnim failAnim;
+
+        private int playerScore = 0;
 
         //public Transform destination;
         //public GameObject stickCopy;
@@ -37,7 +40,11 @@ namespace Golf
 
         private void OnStickHit()
         {
+            playerScore = levelController.score;
             scoreText.text = $"Score: {levelController.score}";
+
+            if (playerScore >= 30)
+                OnGameWin();
         }
 
         private void OnGameOver()
@@ -50,6 +57,12 @@ namespace Golf
             failAnim.GameOverAnim();
             
             gameOverState.Enter();
+        }
+
+        public void OnGameWin()
+        {
+            Exit();
+            gameWinState.Enter();
         }
 
         //public void destroyCopy()
