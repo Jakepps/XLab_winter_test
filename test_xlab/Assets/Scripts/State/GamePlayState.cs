@@ -15,12 +15,9 @@ namespace Golf
         public PlayerController playerController;
         public GameState gameOverState;
         public GameState gameWinState;
-        public TMP_Text scoreText;
 
         public FailAnim failAnim;
         public WinAnim winAnim;
-
-        private int playerScore = 0;
 
         protected override void OnEnable()
         {
@@ -42,8 +39,7 @@ namespace Golf
 
         private void OnStickHit()
         {
-            playerScore = levelController.score;
-            scoreText.text = $"Score: {levelController.score}";
+
         }
 
         private void OnGameOver()

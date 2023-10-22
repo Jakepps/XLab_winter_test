@@ -19,14 +19,6 @@ namespace Golf
             }
         }
 
-        private void Update()
-        {
-            //if (player != null)
-            //{
-            //	player.SetDown(Input.GetMouseButton(0));
-            //}
-        }
-
         public void OnDown()
         {
             player.SetDown(true);

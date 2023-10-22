@@ -14,7 +14,6 @@ namespace Golf
             if (collision.gameObject.CompareTag("Ball"))
             {
                 isWinner = true;
-                Debug.Log("WIN!!!");
 
                 onHitBall?.Invoke();
             }
