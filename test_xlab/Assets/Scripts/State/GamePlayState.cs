@@ -22,8 +22,6 @@ namespace Golf
 
         private int playerScore = 0;
 
-        public GameObject winHouse;
-
         protected override void OnEnable()
         {
             base.OnEnable();
@@ -34,6 +32,11 @@ namespace Golf
             GameEvents.onCollisionStones += OnGameOver;
             GameEvents.onStickHit += OnStickHit;
 
+            foreach (var target in FindObjectsOfType<Target>())
+            {
+                target.onHitBall.AddListener(OnGameWin);
+            }
+
             OnStickHit();
         }
 
@@ -41,14 +44,6 @@ namespace Golf
         {
             playerScore = levelController.score;
             scoreText.text = $"Score: {levelController.score}";
-
-            //if (playerScore >= 30)
-            //    OnGameWin();
-
-            if (winHouse != null && IsTouchingWinHouse())
-            {
-                OnGameWin();
-            }
         }
 
         private void OnGameOver()
@@ -75,24 +70,12 @@ namespace Golf
 
             GameEvents.onCollisionStones -= OnGameOver;
 
-            levelController.enabled = false;
-            playerController.enabled = false;
+            if (levelController)
+                levelController.enabled = false;
+
+            if (playerController)
+                playerController.enabled = false;
         }
 
-        private bool IsTouchingWinHouse()
-        {
-            if (winHouse != null)
-            {
-                Collider2D playerCollider = playerController.GetComponent<Collider2D>();
-                Collider2D houseCollider = winHouse.GetComponent<Collider2D>();
-
-                if (playerCollider != null && houseCollider != null)
-                {
-                    return playerCollider.IsTouching(houseCollider);
-                }
-            }
-
-            return false;
-        }
     }
 }

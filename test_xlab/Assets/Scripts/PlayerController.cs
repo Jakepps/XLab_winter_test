@@ -31,7 +31,6 @@ namespace Golf
         {
             player.SetDown(true);
             SwingAnim.SwingBeg();
-
         }
 
         public void OnUp()

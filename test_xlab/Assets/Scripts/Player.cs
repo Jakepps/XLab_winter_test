@@ -15,14 +15,9 @@ namespace Golf
         private bool m_isDown = false;
         private Vector3 m_lastPosition;
 
-
         private void Update()
         {
             m_lastPosition = helper.position;
-
-            //Quaternion rot = stick.localRotation;
-            //Quaternion toRot = Quaternion.Euler(0, m_isDown ? range : -range, 0);
-            //stick.localRotation = Quaternion.RotateTowards(rot, toRot, speed * Time.deltaTime);
         }
 
         public void SetDown(bool value)

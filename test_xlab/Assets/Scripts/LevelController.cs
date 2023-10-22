@@ -11,22 +11,15 @@ namespace Golf
     public class LevelController : MonoBehaviour
     {
         public Spawner spawner;
-        //private float m_lastSpawnedTime = 0;
-
-        //public float delayMax = 2f;
-        //public float delayMin = 0.3f;
-        //public float delayStep = 0.05f;
 
         public int score = 0;
         public int hightScore = 0;
-
-        //private float m_delay = 0.5f;
 
         private List<GameObject> m_stones = new List<GameObject>(16);
 
         private bool isBallSpawn = false;
 
-        public CinemachineFreeLook folowCamera;
+        [SerializeField] private CinemachineFreeLook freeLookCamera;
         private GameObject currentBall;
 
         public void ClearStones()
@@ -42,15 +35,12 @@ namespace Golf
         private void Start()
         {
             isBallSpawn = false;
-            //m_lastSpawnedTime = Time.time;
-            //RefreshDelay();
         }
 
         private void OnEnable()
         {
             GameEvents.onStickHit += OnStickHit;
             score = 0;
-            //delayMax = 2f;
         }
 
         private void OnDisable()
@@ -67,8 +57,11 @@ namespace Golf
 
             currentBall = spawner.SetCurrentBall();
 
-            folowCamera.ResolveFollow(currentBall.transform);
-            folowCamera.enabled = true;
+            if (currentBall != null && freeLookCamera != null)
+            {
+                freeLookCamera.Follow = currentBall.transform;
+                freeLookCamera.LookAt = currentBall.transform;
+            }
         }
 
         private void Update()
@@ -78,18 +71,9 @@ namespace Golf
                 var stone = spawner.Spawn();
                 m_stones.Add(stone);
 
-                //m_lastSpawnedTime = Time.time;
-
-                //RefreshDelay();
                 isBallSpawn = false;
             }
         }
-
-        //public void RefreshDelay()
-        //{
-        //    m_delay = UnityEngine.Random.Range(delayMin, delayMax);
-        //    delayMax = Mathf.Max(delayMin, delayMax - delayStep);
-        //}
 
         public void ActiveSpawn()
         {

@@ -21,6 +21,8 @@ namespace TestXlab
             }
 
             currentBall = Instantiate(prefab, transform.position, Quaternion.identity);
+            currentBall.tag = "Ball";
+
             return currentBall;
         }
 

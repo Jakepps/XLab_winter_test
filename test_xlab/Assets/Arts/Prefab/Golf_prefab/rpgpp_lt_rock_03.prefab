@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 23769478158867138}
   - component: {fileID: 493970188862177798}
   - component: {fileID: -9128845704772266480}
-  - component: {fileID: 5201105817889046670}
   m_Layer: 0
   m_Name: rpgpp_lt_rock_03
   m_TagString: Untagged
@@ -135,16 +134,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5201105817889046670
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1553163231892768}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e259160d15d8e343accb59719cd0c40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isAfect: 0
