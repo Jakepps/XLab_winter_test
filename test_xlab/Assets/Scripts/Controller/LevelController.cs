@@ -36,7 +36,6 @@ namespace Golf
         private void Start()
         {
             m_lastSpawnedTime = Time.time;
-            //RefreshDelay();
         }
 
         private void OnEnable()

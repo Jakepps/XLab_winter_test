@@ -6,23 +6,25 @@ namespace Golf
 {
     public class Player : MonoBehaviour
     {
-        public Transform stick;
-        public Transform helper;
-        public float range = 30f;
+        public float range = 50f;
         public float speed = 500f;
-        public float power = 20f;
+        public float power = 30f;
 
         private bool m_isDown = false;
-        private Vector3 m_lastPosition;
+        [SerializeField] private Rigidbody m_rb;
+        private Quaternion m_offset;
 
-
-        private void Update()
+        private void Awake()
         {
-            m_lastPosition = helper.position;
+            m_offset = m_rb.rotation;
+        }
 
-            Quaternion rot = stick.localRotation;
-            Quaternion toRot = Quaternion.Euler(0, m_isDown ? -range : range, 0);
-            stick.localRotation = Quaternion.RotateTowards(rot, toRot, speed * Time.deltaTime);
+
+        private void FixedUpdate()
+        {
+            Quaternion rot = m_rb.rotation;
+            Quaternion toRot = m_offset * Quaternion.Euler(0, m_isDown ? -range : range, 0);
+            m_rb.MoveRotation(Quaternion.RotateTowards(rot, toRot, speed * Time.fixedDeltaTime));
         }
 
         public void SetDown(bool value)
@@ -32,16 +34,10 @@ namespace Golf
 
         public void OnCollisonStick(Collider collider)
         {
-            if (collider.TryGetComponent(out Rigidbody body))
+            if (collider.TryGetComponent(out Stone stone) && !stone.isAfect)
             {
-                var dir = (helper.position - m_lastPosition).normalized;
-                body.AddForce(dir * power, ForceMode.Impulse);
-
-                if (collider.TryGetComponent(out Stone stone) && !stone.isAfect)
-                {
-                    stone.isAfect = true;
-                    GameEvents.StickHit();
-                }
+                stone.isAfect = true;
+                GameEvents.StickHit();
             }
         }
     }
