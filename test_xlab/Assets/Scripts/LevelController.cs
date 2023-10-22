@@ -19,9 +19,6 @@ namespace Golf
 
         private bool isBallSpawn = false;
 
-        [SerializeField] private CinemachineFreeLook freeLookCamera;
-        private GameObject currentBall;
-
         public void ClearStones()
         {
             foreach (var stone in m_stones)
@@ -54,14 +51,6 @@ namespace Golf
             hightScore = Mathf.Max(hightScore, score);
 
             Debug.Log($"Score: {score} - hightScore: {hightScore}");
-
-            currentBall = spawner.SetCurrentBall();
-
-            if (currentBall != null && freeLookCamera != null)
-            {
-                freeLookCamera.Follow = currentBall.transform;
-                freeLookCamera.LookAt = currentBall.transform;
-            }
         }
 
         private void Update()

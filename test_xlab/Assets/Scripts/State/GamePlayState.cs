@@ -44,11 +44,11 @@ namespace Golf
 
         private void OnGameOver()
         {
-            //Exit();
+            Exit();
 
-            //failAnim.GameOverAnim();
+            failAnim.GameOverAnim();
 
-            //gameOverState.Enter();
+            gameOverState.Enter();
         }
 
         public void OnGameWin()
